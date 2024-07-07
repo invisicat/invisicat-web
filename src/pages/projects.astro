@@ -1,0 +1,38 @@
+---
+import Project from "../components/Project.astro";
+import Container from "../components/Container.astro";
+import Layout from "../layout/Layout.astro";
+import { Projects as ProjectList, type ProjectProps } from "../lib/projects";
+---
+
+<Layout title="Projects" description="Homepage">
+  <div class="flex flex-row">
+    <Container>
+      <h1 class="text-center text-3xl font-semibold">Projects</h1>
+      <p class="my-4 text-center leading-relaxed">
+        Here are some of the projects I've been working on. Feel free to check
+        them out!
+      </p>
+      <section class="my-8 flex min-h-max flex-col gap-4" id="project-list">
+        {
+          [...ProjectList]
+            .filter((c) => !c.minecraft)
+            .map((p: ProjectProps) => <Project {...p} />)
+        }
+      </section>
+    </Container>
+    <Container>
+      <h1 class="text-center text-3xl font-semibold">Minecraft Plugins</h1>
+      <p class="my-4 text-center leading-relaxed">
+        Some plugins I've made over the years for Minecraft.
+      </p>
+      <section class="my-8 flex min-h-max flex-col gap-4" id="project-list">
+        {
+          [...ProjectList]
+            .filter((c) => c.minecraft)
+            .map((p: ProjectProps) => <Project {...p} />)
+        }
+      </section>
+    </Container>
+  </div>
+</Layout>

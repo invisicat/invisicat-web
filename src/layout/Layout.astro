@@ -1,0 +1,25 @@
+---
+import Head from "../components/Head.astro";
+import Header from "../components/Header.astro";
+
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description }: Props = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <Head />
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <footer class="mx-auto">
+      <p>&copy; {new Date().getFullYear()} Invisicat</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { title, description, link, icons } = Astro.props;
+---
+
+<div
+  class="flex flex-col rounded-sm border border-gray-500 py-2 transition-all hover:border-gray-50"
+>
+  <div class="flex flex-row justify-between">
+    <span class="ml-2 mr-4 flex flex-row">
+      <h1 class="mr-2 text-xl font-semibold leading-loose">{title}</h1>
+      {
+        icons.map((icon: any) => (
+          <Icon name={icon} size={20} class={"mr-1 self-center"} />
+        ))
+      }
+    </span>
+    <a
+      class="mx-4 cursor-pointer self-center align-middle font-light leading-loose transition-colors hover:text-gray-700"
+      href={link}
+      target="_blank"
+    >
+      <Icon name="mdi:github" size={32} />
+    </a>
+  </div>
+  <p class="text-md min-w-xl mx-2 mb-1 line-clamp-2 max-w-xl font-light">
+    {description}
+  </p>
+</div>

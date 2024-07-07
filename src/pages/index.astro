@@ -1,16 +1,57 @@
 ---
-
+import Project from "../components/Project.astro";
+import Container from "../components/Container.astro";
+import Layout from "../layout/Layout.astro";
+import Contact from "../components/Contact.astro";
+import { Projects, type ProjectProps } from "../lib/projects";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Index" description="Homepage">
+  <Container>
+    <h1 class="my-4 text-6xl font-semibold leading-loose text-white lg:text-xl">
+      I'm Andy
+    </h1>
+    <p class="my-4 leading-relaxed">
+      Software Engineer student studying at Stanford University, majoring in
+      Comp Sci &amp; MechE.
+    </p>
+    <p class="my-4 leading-relaxed">
+      I've been working on optimizing backends and learning Rust. Honestly I've
+      been just learning the most random things.
+    </p>
+    <p class="my-4 leading-relaxed">Interested? Contact me.</p>
+    <section id="contact-info" class="flex flex-row">
+      <Contact icon="mdi:github" url="https://github.com/invisicat" />
+
+      <Contact
+        icon="mdi:linkedin"
+        url="https://www.linkedin.com/in/andy-lyek/"
+      />
+      <Contact icon="mdi:email-outline" url="mailto:contact@ricecx.cc" />
+    </section>
+    <section>
+      <div id="project-header" class="flex flex-row justify-between">
+        <h1 class="my-4 text-xl font-semibold leading-loose text-white">
+          Recent Projects
+        </h1>
+        <a
+          class="hover: my-4 self-center font-light leading-loose text-gray-300 transition-colors hover:text-gray-50"
+          href="/projects"
+          >View more
+        </a>
+      </div>
+      <div class="flex min-h-max flex-col gap-4">
+        {Projects.slice(0, 3).map((p: ProjectProps) => <Project {...p} />)}
+      </div>
+    </section>
+    <section>
+      <h1 class="my-4 text-xl font-semibold leading-loose text-white">
+        Let's Connect
+      </h1>
+      <p class="my-4 leading-loose">
+        If you want to get in touch with me or say hi, reach out to me on social
+        media or send me an email.
+      </p>
+    </section>
+  </Container>
+</Layout>

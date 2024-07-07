@@ -1,0 +1,13 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { icon, url } = Astro.props;
+---
+
+<a href={url} target="_blank">
+  <Icon
+    name={icon}
+    size={36}
+    class={"mx-3 self-center hover:text-white transition-colors"}
+  />
+</a>
